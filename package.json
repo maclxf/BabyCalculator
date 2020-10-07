@@ -1,0 +1,23 @@
+{
+  "name": "babycalculator",
+  "version": "1.0.0",
+  "description": "一个计算每月婴儿花销的小计算器",
+  "main": "app.js",
+  "dependencies": {
+    "@vant/weapp": "^1.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "baby",
+    "calculator"
+  ],
+  "author": "maclxf",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:maclxf/BabyCalculator.git"
+  }
+}
