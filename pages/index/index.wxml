@@ -100,7 +100,5 @@
       <iconfont slot="title" name="{{otherPrice !== '' ? 'baby' : 'babyboy'}}" size="40"/>
     </van-cell>
   </van-cell-group>
-  <van-cell-group title="总计">
-    <van-cell center value="{{ total }}" />
-  </van-cell-group>
+  <van-cell title="总计" center value="{{ total }}" />
 </van-popup>

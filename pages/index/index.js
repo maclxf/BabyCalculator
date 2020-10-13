@@ -95,7 +95,7 @@ Page({
     this.disableMilkShow();
   },
   inputMilkName: function(event) {
-    console.log(event);
+    //console.log(event);
     let _search = this.data.milkName
     let tmp = []
     if (_search) {
