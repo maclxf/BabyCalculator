@@ -24,7 +24,7 @@ Page({
     milkPrice: '',
     diapersPrice: '',
     otherPrice: '',
-    externalClasses: ['field-label']
+    total: 0
   },
 
   onLoad: function () {
@@ -51,11 +51,14 @@ Page({
       return
     }
 
+    let total = this.getTotal();
+
     this.setData({
       isLoading:true,
       isDisable:true,
       isReadOnly:true,
-      submitShow: true
+      submitShow: true,
+      total: total
     })
 
 
@@ -164,5 +167,9 @@ Page({
     this.setData({
       progressValue: parseInt(progress)
     })
+  },
+  getTotal: function() {
+    let total = (this.data.milkPrice * 4) + (this.data.diapersPrice * 10 * 30) + (this.data.otherPrice * 1)
+    return parseFloat(total).toFixed(2)
   }
 })

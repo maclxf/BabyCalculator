@@ -101,6 +101,6 @@
     </van-cell>
   </van-cell-group>
   <van-cell-group title="总计">
-    <van-cell center value="{{ milkPrice * 4 + diapersPrice * 10 * 30 + otherPrice}}" />
+    <van-cell center value="{{ total }}" />
   </van-cell-group>
 </van-popup>
