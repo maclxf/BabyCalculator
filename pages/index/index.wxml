@@ -1,6 +1,106 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+<view hidden="{{indexShow}}">
+  <view>
+    <van-cell-group>
+      <van-field
+        model:value="{{ milkName }}"
+        placeholder="请输奶粉关键字"
+        border
+        bind:blur="inputMilkName"
+        readonly="{{isReadOnly}}"
+        error-message="{{milkPriceError}}"
+      >
+        <text slot="left-icon" class="l-fg field-label">奶粉</text>
+        <iconfont slot="right-icon" name="{{milkPrice !== '' ? 'milk' : 'milk1'}}" size="40"/>
+      </van-field>
+      <view class="l-fg right">
+        <text class="field-number">{{milkPrice !== '' ? milkPrice : ''}}</text>
+      </view>
+    </van-cell-group>
+  </view>
+  <view>
+    <van-cell-group>
+      <van-field
+        value=""
+        placeholder="请输尿不湿价格"
+        border
+        bind:change="handleDiapersPrice"
+        error-message="{{diapersPriceError}}"
+        readonly="{{isReadOnly}}"
+      >
+        <text slot="left-icon" class="l-fg field-label">尿不湿</text>
+        <iconfont slot="right-icon" name="{{diapersPrice !== '' ? 'ziyuan1' : 'ziyuan'}}" size="40"/>
+      </van-field>
+      <view class="l-fg right">
+        <text class="field-number">{{diapersPrice !== '' ? diapersPrice : ''}}</text>
+      </view>
+    </van-cell-group>
+  </view>
+
+  <view>
+    <van-cell-group>
+      <van-field
+        value=""
+        placeholder="请输其他价格"
+        border
+        bind:change="handleOtherPrice"
+        error-message="{{otherPriceError}}"
+        readonly="{{isReadOnly}}"
+      >
+        <text slot="left-icon" class="l-fg field-label">其他</text>
+        <iconfont slot="right-icon" name="{{otherPrice !== '' ? 'baby' : 'babyboy'}}" size="40"/>
+      </van-field>
+      <view class="l-fg right">
+        <text class="field-number">{{otherPrice !== '' ? otherPrice : ''}}</text>
+      </view>
+    </van-cell-group>
+  </view>
+
+  <view class="total-navbar">
+    <view class="total-navbar-left">
+      <van-circle value="{{progressValue}}" size="50" color="#ffc0cb" layer-color="#eeeeee" text="{{progressValue}}%" />
+    </view>
+    <view class="total-navbar-right">
+    <van-button color="#ffc0cb" type="primary" bind:click="submitHandler" loading="{{isLoading}}" disabled="{{isDisabled}}" >计算</van-button>
+    </view>
   </view>
 </view>
+
+
+
+<!--
+<van-popup show="{{ indexShow }}" bind:close="disableIndexShow" style="text-align:center">
+  <view style="font-weight:bolder;font-size:40rpx;">
+    <view>奶爸你的钱包准备好了吗？？</view>
+    <view>奶粉，尿不湿来得更猛烈些吧！！</view>
+  </view>
+  <iconfont name="baby" size="300"/>
+</van-popup>
+-->
+
+<van-popup show="{{ milkShow }}" bind:close="disableMilkShow" position="bottom">
+  <van-picker
+    columns="{{ milks }}"
+    show-toolbar
+    title="选择对应奶粉"
+    bind:cancel="disableMilkShow"
+    bind:confirm="onConfirmMilk"
+  />
+</van-popup>
+
+<van-popup show="{{ submitShow }}" closeable bind:close="disableSubmitShow" custom-style="width: 80%;">
+  <van-cell-group title="明细">
+    <van-cell value="{{milkPrice * 4}}" label="单价：{{milkPrice}}">
+      <iconfont slot="title" name="{{milkPrice !== '' ? 'milk' : 'milk1'}}" size="40"/>
+    </van-cell>
+    <van-cell value="{{ diapersPrice * 10 * 30}}" label="单价：{{ diapersPrice }}">
+      <iconfont slot="title" name="{{diapersPrice !== '' ? 'ziyuan1' : 'ziyuan'}}" size="40"/>
+    </van-cell>
+    <van-cell value="{{otherPrice}}" label="{{otherPrice}}">
+      <iconfont slot="title" name="{{otherPrice !== '' ? 'baby' : 'babyboy'}}" size="40"/>
+    </van-cell>
+  </van-cell-group>
+  <van-cell-group title="总计">
+    <van-cell center value="{{ milkPrice * 4 + diapersPrice * 10 * 30 + otherPrice}}" />
+  </van-cell-group>
+</van-popup>

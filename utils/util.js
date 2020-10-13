@@ -14,6 +14,19 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const isNumber = n => {
+  if (isNaN(n)) {
+    return false
+  }
+
+  if (n < 0) {
+    return false
+  }
+
+  return true
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  isNumber: isNumber
 }

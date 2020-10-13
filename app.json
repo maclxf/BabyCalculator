@@ -4,9 +4,12 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#ffc0cb",
+    "navigationBarTitleText": "宝贝花销计算器",
+    "navigationBarTextStyle":"white"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+        "iconfont": "./font/iconfont/iconfont"
+    }
 }
